@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+
+# Streamlit
+.streamlit/
+
+# Environment
+venv/
+.env
+
+# OS junk
+.DS_Store
+
+# VSCode
+.vscode/
+
+# MySQL dumps
+*.sql
+
