@@ -2,18 +2,18 @@
 Real-Time Cricket Dashboard • MySQL Analytics • Streamlit Web App
 
 Cricbuzz LiveStats is a real-time cricket analytics platform built using Streamlit, powered by the Cricbuzz API (via RapidAPI) and backed by a MySQL database.
-
-This project pulls:
-
-Live match details
-
-Full scorecards
-
-Player stats
-
-Aggregated batting/bowling data
-
-Series-wise match data
+    
+    This project pulls:
+    
+    Live match details
+    
+    Full scorecards
+    
+    Player stats
+    
+    Aggregated batting/bowling data
+    
+    Series-wise match data
 
 … and gives you a beautiful UI + SQL-based analytics engine.
 
@@ -277,3 +277,4 @@ Add user login (JWT + SQLite)
 Hemanth Kumar
 Real-time dashboard & analytics developer
 GitHub: https://github.com/hemanth41079299/cricbuzz_livestats 
+
