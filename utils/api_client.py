@@ -128,9 +128,7 @@ def get_series_matches(series_id: str | int) -> Dict[str, Any]:
     return _request(path)
 
 
-# -----------------------------------------------------------------------------
 # Simple manual test when running this file directly
-# -----------------------------------------------------------------------------
 
 
 if __name__ == "__main__":
