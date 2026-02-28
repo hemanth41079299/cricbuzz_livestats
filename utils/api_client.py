@@ -81,9 +81,8 @@ def _request(
         raise CricbuzzAPIError(f"Failed to parse JSON from Cricbuzz API: {e}") from e
 
 
-# -----------------------------------------------------------------------------
 # Public helper functions for specific endpoints
-# -----------------------------------------------------------------------------
+
 
 
 def get_international_series() -> Dict[str, Any]:
