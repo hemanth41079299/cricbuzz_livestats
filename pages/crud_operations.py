@@ -14,9 +14,7 @@ from utils.db_connection import (
     execute_update,
 )
 
-# ---------------------------------
 # Load DB credentials from .env
-# ---------------------------------
 load_dotenv()
 
 DB_HOST = os.getenv("DB_HOST", "127.0.0.1")
@@ -37,9 +35,7 @@ def show_crud_operations():
 
     schema = _ensure_schema_state()
 
-    # -------------------------------
     # 0) Show how connection is handled
-    # -------------------------------
     st.header("🔌 MySQL Connection")
 
     # Tell the user we are using .env
@@ -72,9 +68,7 @@ You can change these by editing `.env` (DB_HOST, DB_USER, DB_PASSWORD).
     schema = st.session_state.get("schema")
     st.divider()
 
-    # -------------------------------
     # 2) Choose database & table
-    # -------------------------------
     if not schema:
         st.info("Connect first to load schema information.")
         return
@@ -121,9 +115,7 @@ You can change these by editing `.env` (DB_HOST, DB_USER, DB_PASSWORD).
 
     st.divider()
 
-    # -------------------------------
     # 3) View / Read Table
-    # -------------------------------
     st.subheader("📖 View Table Data")
 
     limit = st.number_input(
@@ -143,9 +135,7 @@ You can change these by editing `.env` (DB_HOST, DB_USER, DB_PASSWORD).
         except Exception as e:
             st.error(f"❌ Read failed: {e}")
 
-    # -------------------------------
     # 4) Custom SELECT
-    # -------------------------------
     with st.expander("🔎 Run Custom SELECT"):
         st.caption("Only `SELECT` queries are allowed here (read-only).")
         custom_sql = st.text_area(
@@ -169,9 +159,7 @@ You can change these by editing `.env` (DB_HOST, DB_USER, DB_PASSWORD).
 
     st.divider()
 
-    # -------------------------------
     # 5) Insert Row
-    # -------------------------------
     st.subheader("➕ Insert Row")
 
     try:
@@ -215,9 +203,7 @@ You can change these by editing `.env` (DB_HOST, DB_USER, DB_PASSWORD).
 
     st.divider()
 
-    # -------------------------------
     # 6) Delete Row(s)
-    # -------------------------------
     st.subheader("🗑️ Delete Row(s)")
 
     with st.form("delete_form"):
@@ -239,9 +225,7 @@ You can change these by editing `.env` (DB_HOST, DB_USER, DB_PASSWORD).
 
     st.divider()
 
-    # -------------------------------
     # 7) Update Row(s)
-    # -------------------------------
     st.subheader("📝 Update Rows")
 
     with st.form("update_form"):
