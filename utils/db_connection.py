@@ -3,9 +3,7 @@ from mysql.connector import Error
 import pandas as pd
 
 
-# --------------------------------------------------
 # 1️⃣ Create Connection
-# --------------------------------------------------
 def create_connection(host, user, passwd, database=None):
     """
     Create a new MySQL connection.
@@ -20,9 +18,7 @@ def create_connection(host, user, passwd, database=None):
     )
 
 
-# --------------------------------------------------
 # 2️⃣ Discover Full Schema (DB → Tables → Columns)
-# --------------------------------------------------
 def get_mysql_schema(host, user, passwd):
     """
     Returns nested dict with DBs → tables → column metadata.
