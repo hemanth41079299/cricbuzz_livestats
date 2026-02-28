@@ -12,9 +12,7 @@ from utils.api_client import (
 )
 
 
-# -------------------------------
 # Helper: Time Conversion
-# -------------------------------
 def format_time(epoch_ms):
     """Convert epoch ms to human readable date."""
     if not epoch_ms:
@@ -27,9 +25,8 @@ def format_time(epoch_ms):
         return "N/A"
 
 
-# -------------------------------
 # Helper: Render Scorecard
-# -------------------------------
+
 def show_innings_scorecard(match_id: str):
     """Display full batting + bowling scorecard using centralized API."""
     try:
@@ -42,7 +39,6 @@ def show_innings_scorecard(match_id: str):
         st.warning("No response received from the Cricbuzz API for this match.")
         return
 
-    # Try multiple possible keys that Cricbuzz might use for innings/scorecards
     innings_list = (
         data.get("scorecard")          # common key
         or data.get("scoreCard")       # camelCase variant
@@ -75,7 +71,6 @@ def show_innings_scorecard(match_id: str):
 
         st.subheader(f"📊 Inning {i} – {bat_team_name}")
 
-        # ---------------- Batting ----------------
         batsmen_list = []
 
         # Some responses: innings["batsman"] = list
@@ -106,7 +101,6 @@ def show_innings_scorecard(match_id: str):
         else:
             st.info("No batting details found for this innings.")
 
-        # ---------------- Bowling ----------------
         bowlers_list = []
 
         # Some responses: innings["bowler"] = list
@@ -139,9 +133,8 @@ def show_innings_scorecard(match_id: str):
         st.markdown("---")
 
 
-# -------------------------------
 # MAIN PAGE
-# -------------------------------
+
 def show_live_matches():
     st.title("⚡ Live Cricket Matches")
 
@@ -156,9 +149,7 @@ def show_live_matches():
         st.warning("No live matches right now.")
         return
 
-    # -------------------------------
     # Build list of series → matches
-    # -------------------------------
     series_options = {}
     for type_match in data.get("typeMatches", []):
         match_type = type_match.get("matchType", "UNKNOWN").upper()
@@ -184,9 +175,7 @@ def show_live_matches():
 
     matches = series_options[selected_series]
 
-    # -------------------------------
     # Display each match in the series
-    # -------------------------------
     for match in matches:
         info = match.get("matchInfo", {})
         score = match.get("matchScore", {})
@@ -202,7 +191,7 @@ def show_live_matches():
 
         match_id = info.get("matchId", "")
 
-        # ---------- Header ----------
+        #  Header
         st.subheader(f"🆚 {team1} vs {team2}")
 
         st.write(
@@ -212,7 +201,7 @@ def show_live_matches():
         st.write(f"**Status:** {info.get('status', '')}")
         st.write(f"**State:** {info.get('stateTitle', '')}")
 
-        # ---------- Venue ----------
+        # Venue 
         venue = info.get("venueInfo", {})
         st.write(
             f"**Venue:** {venue.get('ground', '')}, "
@@ -230,7 +219,7 @@ def show_live_matches():
                 f"{t1_inn.get('overs', 0)} overs"
             )
 
-        # ---------- Score (Team 2) ----------
+        #  Score (Team 2) 
         t2_inn = score.get("team2Score", {}).get("inngs1", {})
         if t2_inn:
             st.success(
@@ -239,7 +228,7 @@ def show_live_matches():
                 f"{t2_inn.get('overs', 0)} overs"
             )
 
-        # ---------- View Scorecard Button ----------
+        #View Scorecard Button 
         if match_id:
             if st.button(
                 f"📑 View Scorecard – {team1_short} vs {team2_short}",
